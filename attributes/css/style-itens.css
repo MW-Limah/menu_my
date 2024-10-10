@@ -6,9 +6,11 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    transition: transform 0.5s;
+}
+
+.item-card.scale {
+    transform: scale(1.1);
 }
 
 .item-card:hover {
@@ -47,4 +49,10 @@
 
 a:hover {
     color: #81b0c2;
+}
+
+@media (max-width: 768px) {
+    .item-card {
+        transform: scale(1.05); /* Ajuste o valor conforme necessário */
+    }
 }
