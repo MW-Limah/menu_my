@@ -4,11 +4,13 @@ document.addEventListener('scroll', () => {
 
     cards.forEach(card => {
         const rect = card.getBoundingClientRect();
-        const cardCenter = rect.top + rect.height / 2;
-        const viewportCenter = windowHeight / 2;
+        const cardTop = rect.top;
+        const cardBottom = rect.bottom;
 
-        // Verifica se o centro do card está próximo do centro da viewport
-        if (cardCenter > viewportCenter - 50 && cardCenter < viewportCenter + 50) {
+        // Verifica se alguma parte do card está no centro do viewport
+        if ((cardTop >= 0 && cardTop <= windowHeight / 2) || 
+            (cardBottom >= windowHeight / 4 && cardBottom <= windowHeight) ||
+            (cardTop <= 0 && cardBottom >= windowHeight)) {
             card.classList.add('scale');
         } else {
             card.classList.remove('scale');
